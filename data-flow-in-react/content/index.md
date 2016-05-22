@@ -58,7 +58,7 @@
 
 ## data-flow 是什么？
 
- (1) 概要
+(1) 概要
    * react以组件为页面信息架构的基本单元，然而组件之间并非是孤立的，相反是联动的，互相协作才能完成前端展示和交互逻辑，因此，我们通过data-flow这种方式，完成组件间的协作。
 
 (2) react原生支持的方式
@@ -66,12 +66,13 @@
    * React.withContext 和 getChildContext, 优点是可以显著减少props的上下传递
    * 总之: react 提供的数据流动api过于底层，在成产环境下，需要过多的代码量，因此，需要一个比较统一的解决方案
 
- (3) demo 描述
-
+(3) demo 描述
+   * 如下图所示：A组件和B组件，A组件查出结果集后，需要将该结果集同步给B组件，B组件通知react重新渲染，从而展示A节点产出来的结果集,下面，我们将以这个demo来阐述几个比较有代表性的data-flow解决方案。
    ![alt text](../image/QQ20160522-7.png )
 
 ## flux
-
+ (1) 架构图
+   ![alt text](../image/QQ20160522-8.png )
 ## reflux
 ## react-data-binding
 ## redux
