@@ -1,0 +1,25 @@
+{
+  "name": "thinking-in-js",
+  "version": "1.0.0",
+  "description": "this is packge want to share something usefully thought in js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moreJs/thinking-in-js.git"
+  },
+  "keywords": [
+    "share"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moreJs/thinking-in-js/issues"
+  },
+  "homepage": "https://github.com/moreJs/thinking-in-js#readme",
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  }
+}
