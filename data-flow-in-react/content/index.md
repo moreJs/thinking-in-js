@@ -87,6 +87,8 @@
 
   (2) 原理
 
+ Reflux的单向数据流模式主要由actions和stores组成。例如，当组件list新增item时，会调用actions的某个方法（如addItem(data)）,并将新的数据当参数传递进去，通过事件机制，数据会传递到stroes中，stores可以向服务器发起请求，并更新数据数据库。数据更新成功后，还是通过事件机制传递的组件list当中，并更新ui。整个过程的对接是通过事件驱动的
+
   (3) 示例代码
   ```
 var TodoActions = Reflux.createActions([
@@ -136,3 +138,4 @@ React.render(<TodoComponent />, document.getElementById('container'));
 ## 参考文献
     - [颠覆式前端UI开发框架：React] (http://www.infoq.com/cn/articles/subversion-front-end-ui-development-framework-react)
     - [深度剖析：如何实现一个 Virtual DOM 算法] (https://github.com/livoras/blog/issues/13)
+    - [React Reflux] (https://segmentfault.com/a/1190000002793786?utm_source=tuicool)
