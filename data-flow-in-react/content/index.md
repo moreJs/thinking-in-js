@@ -134,6 +134,48 @@ React.render(<TodoComponent />, document.getElementById('container'));
 
 ## react-data-binding
 ## redux
+
+(1) createStore
+ 
+   * currentState = currentReducer(currentState, action)
+
+(2) Reducer
+
+   * (previousState, action) => newState
+
+   * combineReducers 
+```
+const reducer = combineReducers({
+  a: doSomethingWithA,
+  b: processB,
+  c: c
+})
+
+```
+   * ```
+function reducer(state = {}, action) {
+  return {
+    a: doSomethingWithA(state.a, action),
+    b: processB(state.b, action),
+    c: c(state.c, action)
+  }
+}
+``` 
+
+(3) applyMiddleware(...middlewares)
+
+    * ({ getState, dispatch }) => next => action
+
+    * ```
+    var middlewareAPI = {
+      getState: store.getState,
+      dispatch: (action) => dispatch(action)
+    }
+    chain = middlewares.map(middleware => middleware(middlewareAPI))
+    dispatch = compose(...chain)(store.dispatch)
+```
+  
+   
 ## 写在最后
 ## 参考文献
     - [颠覆式前端UI开发框架：React] (http://www.infoq.com/cn/articles/subversion-front-end-ui-development-framework-react)
