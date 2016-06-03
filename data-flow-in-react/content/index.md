@@ -151,8 +151,6 @@ const reducer = combineReducers({
   c: c
 })
 
-```
-   * ```
 function reducer(state = {}, action) {
   return {
     a: doSomethingWithA(state.a, action),
@@ -166,7 +164,7 @@ function reducer(state = {}, action) {
 
     * ({ getState, dispatch }) => next => action
 
-    * ```
+ ```
     var middlewareAPI = {
       getState: store.getState,
       dispatch: (action) => dispatch(action)
