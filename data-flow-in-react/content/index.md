@@ -133,6 +133,43 @@ React.render(<TodoComponent />, document.getElementById('container'));
 
 
 ## react-data-binding
+
+(1) Store
+```
+{
+    page: 1,
+    total: 0,
+    affiliateId: null,
+    masters: [],
+    currentMaster: null,
+    currentUpdateMaster: null,
+    deny: null
+}
+```
+
+(2) createRootContainer(initialStore = {}, option = {}) 
+```
+export default createRootContainer({
+    page: 1,
+    total: 0,
+    affiliateId: null,
+    masters: [],
+    currentMaster: null,
+    currentUpdateMaster: null,
+    deny: null
+})(Entry);
+```
+
+(3) createContainer(selector_, option = {})
+
+```
+export default createContainer({
+    page: 'page',
+    masters: 'masters',
+    currentMaster: 'currentMaster',
+    currentUpdateMaster: 'currentUpdateMaster'
+})(BodyR);
+```
 ## redux
 
 (1) createStore
