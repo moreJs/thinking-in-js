@@ -175,10 +175,41 @@ export default createContainer({
 (1) createStore
  
    * currentState = currentReducer(currentState, action)
+```
+import { createStore } from 'redux'
+
+function todos(state = [], action) {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return state.concat([ action.text ])
+    default:
+      return state
+  }
+}
+
+let store = createStore(todos, [ 'Use Redux' ])
+
+store.dispatch({
+  type: 'ADD_TODO',
+  text: 'Read the docs'
+})
+
+console.log(store.getState())
+```
 
 (2) Reducer
 
    * (previousState, action) => newState
+```
+export default function todos(state = [], action) {
+  switch (action.type) {
+  case 'ADD_TODO':
+    return state.concat([action.text])
+  default:
+    return state
+  }
+}
+```
 
    * combineReducers 
 ```
@@ -210,7 +241,36 @@ function reducer(state = {}, action) {
     dispatch = compose(...chain)(store.dispatch)
 ```
   
-   
+```
+import { createStore, applyMiddleware } from 'redux'
+import todos from './reducers'
+
+function logger({ getState }) {
+  return (next) => (action) => {
+    console.log('will dispatch', action)
+
+    // 调用 middleware 链中下一个 middleware 的 dispatch。
+    let returnValue = next(action)
+
+    console.log('state after dispatch', getState())
+
+    // 一般会是 action 本身，除非
+    // 后面的 middleware 修改了它。
+    return returnValue
+  }
+}
+
+let createStoreWithMiddleware = applyMiddleware(logger)(createStore)
+let store = createStoreWithMiddleware(todos, [ 'Use Redux' ])
+
+store.dispatch({
+  type: 'ADD_TODO',
+  text: 'Understand the middleware'
+})
+// (将打印如下信息:)
+// will dispatch: { type: 'ADD_TODO', text: 'Understand the middleware' }
+// state after dispatch: [ 'Use Redux', 'Understand the middleware' ]
+```
 ## 写在最后
 ## 参考文献
     - [颠覆式前端UI开发框架：React] (http://www.infoq.com/cn/articles/subversion-front-end-ui-development-framework-react)
